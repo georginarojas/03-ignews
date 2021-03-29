@@ -1,4 +1,4 @@
-import { GetServerSideProps } from "next";
+import { GetStaticProps } from "next";
 import Head from "next/head";
 import { SubscribeButton } from "../components/SubscribeButton";
 import { stripe } from "../services/stripe";
@@ -38,7 +38,12 @@ export default function Home({product}: HomeProps) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+//-- Using SSR (server side rendering)
+// export const getServerSideProps: GetServerSideProps = async () => {
+
+//-- Usgin SSG (server static generation)
+export const getStaticProps: GetStaticProps = async () => {
+
   // "retrive" return only one product
   // "expand" return all the informations of the product
   const price = await stripe.prices.retrieve("price_1IaTVyAuCDd75JjsgkpCBL3l", { 
@@ -56,6 +61,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   return {
     props: {
       product
-    }
+    },
+    revalidate: 60 * 60 * 24 // 24 hours (This is used in SSG)
   };
 };
