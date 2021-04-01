@@ -5,6 +5,7 @@ import Prismic from "@prismicio/client";
 import { getPrismicClient } from "../../services/prismic";
 import { RichText } from "prismic-dom";
 import styles from "./styles.module.scss";
+import Link from "next/link";
 
 type Post = {
   slug: string;
@@ -26,11 +27,13 @@ export default function Posts({ posts }: PostsProps) {
       <main className={styles.container}>
         <div className={styles.posts}>
           {posts.map((post) => (
-            <a key={post.slug} href="#">
-              <time>{post.updatedAt}</time>
-              <strong>{post.title}</strong>
-              <p>{post.excerpt}</p>
-            </a>
+            <Link href={`/posts/${post.slug}`}>
+              <a key={post.slug} >
+                <time>{post.updatedAt}</time>
+                <strong>{post.title}</strong>
+                <p>{post.excerpt}</p>
+              </a>
+            </Link>
           ))}
         </div>
       </main>
@@ -49,9 +52,8 @@ export const getStaticProps: GetStaticProps = async () => {
     }
   );
 
-
   // console.log("Response ", response);
-//   console.log(JSON.stringify(response, null, 2)); // For to see 2 or more levels of Indentation
+  //   console.log(JSON.stringify(response, null, 2)); // For to see 2 or more levels of Indentation
 
   // Formatting posts
   const posts = response.results.map((post) => {
@@ -59,8 +61,10 @@ export const getStaticProps: GetStaticProps = async () => {
       slug: post.uid,
       title: RichText.asText(post.data.title),
       excerpt:
-        post.data.content.find((content) => content.type === "paragraph")?.text ?? "",
-      updatedAt: new Date(post.last_publication_date).toLocaleDateString("pt-br",
+        post.data.content.find((content) => content.type === "paragraph")
+          ?.text ?? "",
+      updatedAt: new Date(post.last_publication_date).toLocaleDateString(
+        "pt-br",
         {
           day: "2-digit",
           month: "long",
