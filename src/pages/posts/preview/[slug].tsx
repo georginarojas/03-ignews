@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Head from "next/head";
-import { GetStaticProps } from "next";
+import { GetStaticPaths, GetStaticProps } from "next";
 import { useSession } from "next-auth/client";
 import Link from "next/link";
 import { useRouter } from "next/dist/client/router";
@@ -56,9 +56,10 @@ export default function PostPreview({ post }: PostPreviewProps) {
   );
 }
 
-export const getStaticPaths = () => {
+// This method only exists in dynamic pages [var].tsx
+export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths: [],
+    paths: [], // we pass all the paths that we want to load during the build
     fallback: "blocking",
   };
 };
@@ -88,5 +89,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       post,
     },
+    revalidate: 60 * 30 // 30 min
   };
 };
