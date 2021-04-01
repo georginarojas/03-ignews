@@ -6,8 +6,6 @@ import styles from "./styles.module.scss";
 export function SignInButton() {
   const [session] = useSession();
 
-  console.log("Session ", session);
-
   return session ? (
     <button
       className={styles.signInButton}
