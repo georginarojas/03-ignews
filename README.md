@@ -6,11 +6,11 @@
   <a href="#-functionalities">Functionalities</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 
 </p>
 
-![Demo ig.news]()
+![Demo ig.news](https://j.gifs.com/OM1O4R.gif)
 
 ## Description
-The ig.news is an application that shows a posts list for the public. For access complete to post, the user needs to be subscribed and logged in. The user can sign in using their GitHub account, for the subscription, the application uses the Stripe service, and the posts are created and loaded from the Prismic service. 
-For last, the data of registered users are saved using Fauna DB.
+The ig.news is an application that shows a posts list for the public. For access complete to post, the user needs to be subscribed and logged in. The user can sign in using their GitHub account, for the subscription, the application uses the Stripe service, and the posts are created and loaded from the Prismic CMS. 
+For last, the data of registered users are saved using Fauna database.
 
 ## Technologies
 - Yarn
@@ -32,9 +32,9 @@ For last, the data of registered users are saved using Fauna DB.
 - The user can sign in with a GitHub account.
 - The user can subscribe and pay across Stripe service.
 - The app should communicate and use webhooks from Stripe.
-- The app should get the posts from Prismic.
+- The app should get the posts from Prismic and showing in the posts page.
 - The app should show the complete post for users subscribed and logged in.
-- The app should show a fragment of the post the way public.
+- The app should show a fragment of the post for users logged in.
 
 
 ---
