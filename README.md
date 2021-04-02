@@ -9,7 +9,8 @@
 ![Demo ig.news]()
 
 ## Description
-The ig.news is an application that shows an articles list, for access complete to articles, the user needs to be subscribed and logging. The user can sign in using their GitHub account, for the subscription, the application uses the Stripe service, and the posts are created and loaded from the Prismic service. 
+The ig.news is an application that shows a posts list for the public. For access complete to post, the user needs to be subscribed and logged in. The user can sign in using their GitHub account, for the subscription, the application uses the Stripe service, and the posts are created and loaded from the Prismic service. 
+For last, the data of registered users are saved using Fauna DB.
 
 ## Technologies
 - Yarn
@@ -20,13 +21,20 @@ The ig.news is an application that shows an articles list, for access complete t
 - Nextjs
 - SASS
 
-### Services
-- Prismic.
+#### Services
 - Stripe.
+#### CMS
+- Prismic.
+#### Serverless database
+- Faunadb.
 
 ## Functionalities
-- 
-
+- The user can sign in with a GitHub account.
+- The user can subscribe and pay across Stripe service.
+- The app should communicate and use webhooks from Stripe.
+- The app should get the posts from Prismic.
+- The app should show the complete post for users subscribed and logged in.
+- The app should show a fragment of the post the way public.
 
 
 ---
