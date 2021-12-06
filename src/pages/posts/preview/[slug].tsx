@@ -3,7 +3,8 @@ import Head from "next/head";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { useSession } from "next-auth/client";
 import Link from "next/link";
-import { useRouter } from "next/dist/client/router";
+// import { useRouter } from "next/dist/client/router";
+import { useRouter } from "next/router";
 
 import { RichText } from "prismic-dom";
 import { getPrismicClient } from "../../../services/prismic";

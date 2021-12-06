@@ -12,6 +12,9 @@ export default NextAuth({
       scope: "read:user", // scope defines what informations we need from the user github
     }),
   ],
+  jwt: {
+    signingKey: process.env.JWT_SIGNING_KEY
+  },
   callbacks: {
 
     async session(session){
